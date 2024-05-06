@@ -1,0 +1,397 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Obesity - Predict</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <main class="max-width-wrapper">
+      <div class="page-header">
+        <a href="/" class="btn back-btn">Go Back</a>
+        <h1>Input values as per described</h1>
+      </div>
+      <div class="form-wrapper">
+        <form action="/predict" method="post" class="prediction-input-form">
+          {%csrf_token%}
+
+          <!-- gender -->
+          <div class="field">
+            <label for="gender" class="field-label">Gender</label>
+            <div class="interaction-fields">
+              <span>
+                <label for="gender-radio-male">Male</label>
+                <input
+                  type="radio"
+                  name="gender-radio"
+                  id="gender-radio-male"
+                  value="male"
+                />
+              </span>
+              <span>
+                <label for="gender-radio-female">Female</label>
+                <input
+                  type="radio"
+                  name="gender-radio"
+                  id="gender-radio-female"
+                  value="female"
+                   
+              /></span>
+            </div>
+          </div>
+
+          <!-- age -->
+          <div class="field">
+            <label for="age" class="field-label">Age</label>
+            <div class="interaction-fields">
+              <input
+                type="number"
+                name="age"
+                id="age"
+                placeholder="Your current age"
+              />
+            </div>
+          </div>
+
+          <!-- height -->
+          <div class="field">
+            <label for="height" class="field-label">Height</label>
+            <div class="interaction-fields">
+              <input
+                type="number"
+                name="height"
+                id="height"
+                min="0.1"
+                step="0.01"
+                placeholder="Your height in metres"
+              />
+            </div>
+          </div>
+
+          <!-- weight -->
+          <div class="field">
+            <label for="weight" class="field-label">Weight</label>
+            <div class="interaction-fields">
+              <input
+                type="number"
+                name="weight"
+                id="weight"
+                placeholder="Your weight in kgs"
+              />
+            </div>
+          </div>
+
+          <!-- family history -->
+          <div class="field">
+            <label for="familyHistory" class="field-label"
+              >Family History of Obesity?</label
+            >
+            <div class="interaction-fields">
+              <span>
+                <label for="obesityHistory-radio-yes">Yes</label>
+                <input
+                  type="radio"
+                  name="familyHistory-radio"
+                  id="obesityHistory-radio-yes"
+                  value="yes"
+                   
+                />
+              </span>
+              <span>
+                <label for="obesityHistory-radio-no">No</label>
+                <input
+                  type="radio"
+                  name="familyHistory-radio"
+                  id="obesityHistory-radio-no"
+                  value="no"
+              /></span>
+            </div>
+          </div>
+
+          <!-- high Calorie Food in meals -->
+          <div class="field">
+            <label for="favc" class="field-label">
+              Do you often eat High Calorie food in meals?
+            </label>
+            <div class="interaction-fields">
+              <span>
+                <label for="favc-radio-yes">Yes</label>
+                <input
+                  type="radio"
+                  name="favc-radio"
+                  id="favc-radio-yes"
+                  value="yes"
+                   
+                />
+              </span>
+              <span>
+                <label for="favc-radio-no">No</label>
+                <input
+                  type="radio"
+                  name="favc-radio"
+                  id="favc-radio-no"
+                  value="no"
+              /></span>
+            </div>
+          </div>
+
+          <!-- vegetables in meals -->
+          <div class="field">
+            <label for="fcvc" class="field-label">
+              How often do you eat vegetables in your meals?
+            </label>
+            <div class="interaction-fields">
+              <input
+                type="range"
+                min="1.0"
+                max="3.0"
+                step="0.01"
+                name="fcvc"
+                id="fcvc"
+              />
+            </div>
+            <div class="slider-checkpoints">
+              <span>Never</span>
+              <span>Sometimes</span>
+              <span>Always</span>
+            </div>
+          </div>
+
+          <!-- Number of meals in a day -->
+          <div class="field">
+            <label for="ncp" class="field-label">
+              How many meals do you comsume in a day?
+            </label>
+            <div class="interaction-fields">
+              <input
+                type="range"
+                min="1.0"
+                max="4.0"
+                step="0.01"
+                name="ncp"
+                id="ncp"
+              />
+            </div>
+            <div class="slider-checkpoints">
+              <span>1</span>
+              <span>2</span>
+              <span>3</span>
+              <span>>3</span>
+            </div>
+          </div>
+
+          <!-- How often eat in between meals -->
+          <div class="field col-span-12">
+            <label for="caec" class="field-label">
+              How often do you eat between meals?
+            </label>
+            <div class="interaction-fields">
+              <input type="range" min="0.0" max="3.0" name="caec" id="caec" />
+            </div>
+            <div class="slider-checkpoints">
+              <span>Never</span>
+              <span>Sometimes</span>
+              <span>Frequently</span>
+              <span>Always</span>
+            </div>
+          </div>
+
+          <!-- smoker? -->
+          <div class="field">
+            <label for="smoke" class="field-label"> Do you Smoke? </label>
+            <div class="interaction-fields">
+              <span>
+                <label for="smoke-radio-yes">Yes</label>
+                <input
+                  type="radio"
+                  name="smoke-radio"
+                  id="smoke-radio-yes"
+                  value="yes"
+                   
+                />
+              </span>
+              <span>
+                <label for="smoke-radio-no">No</label>
+                <input
+                  type="radio"
+                  name="smoke-radio"
+                  id="smoke-radio-no"
+                  value="no"
+              /></span>
+            </div>
+          </div>
+
+          <!-- water consumption in meals -->
+          <div class="field">
+            <label for="ch2o" class="field-label">
+              How much water do you drink daily? (in litres)
+            </label>
+            <div class="interaction-fields">
+              <input
+                type="range"
+                min="1.0"
+                max="3.0"
+                step="0.001"
+                name="ch2o"
+                id="ch2o"
+              />
+            </div>
+            <div class="slider-checkpoints">
+              <span>&lt;1L</span>
+              <span>1L</span>
+              <span>2L</span>
+              <span>>2L</span>
+            </div>
+          </div>
+
+          <!-- monitor calories? -->
+          <div class="field">
+            <label for="scc" class="field-label">
+              Do you monitor the calories you eat daily?
+            </label>
+            <div class="interaction-fields">
+              <span>
+                <label for="scc-radio-yes">Yes</label>
+                <input
+                  type="radio"
+                  name="scc-radio"
+                  id="scc-radio-yes"
+                  value="yes"
+                />
+              </span>
+              <span>
+                <label for="scc-radio-no">No</label>
+                <input
+                  type="radio"
+                  name="scc-radio"
+                  id="scc-radio-no"
+                  value="no"
+                   
+              /></span>
+            </div>
+          </div>
+
+          <!-- How often is the physical activity -->
+          <div class="field col-span-23">
+            <label for="faf" class="field-label">
+              How often do you have physical activity?
+            </label>
+            <div class="interaction-fields">
+              <input
+                type="range"
+                min="0.0"
+                max="3.0"
+                step="0.001"
+                name="faf"
+                id="faf"
+              />
+            </div>
+            <div class="slider-checkpoints">
+              <span>Never</span>
+              <span>Sometimes</span>
+              <span>Frequently</span>
+              <span>Always</span>
+            </div>
+          </div>
+
+          <!-- technological devices -->
+          <div class="field">
+            <label for="tue" class="field-label">
+              Usage time of phone, videogames, television, computer and others
+              (hrs)
+            </label>
+            <div class="interaction-fields">
+              <input
+                type="range"
+                min="0.0"
+                max="2.0"
+                step="0.01"
+                name="tue"
+                id="tue"
+              />
+            </div>
+            <div class="slider-checkpoints">
+              <span>0-2</span>
+              <span>3-5</span>
+              <span>>5</span>
+            </div>
+          </div>
+
+          <!-- How often do you consume alcohol -->
+          <div class="field col-span-12">
+            <label for="calc" class="field-label">
+              how often do you drink alcohol? ?
+            </label>
+            <div class="interaction-fields">
+              <input type="range" min="0.0" max="3.0" name="calc" id="caec" />
+            </div>
+            <div class="slider-checkpoints">
+              <span>Never</span>
+              <span>Sometimes</span>
+              <span>Frequently</span>
+              <span>Always</span>
+            </div>
+          </div>
+          <!-- monitor calories? -->
+          <div class="field col-span-34">
+            <label for="mtrans" class="field-label">
+              Which transportation do you usually use?
+            </label>
+            <div class="interaction-fields">
+              <span>
+                <label for="mtrans-radio-Automobile">Automobile</label>
+                <input
+                  type="radio"
+                  name="mtrans-radio"
+                  id="mtrans-radio-Automobile"
+                  value="Automobile"
+                   
+              /></span>
+
+              <span>
+                <label for="mtrans-radio-Motorbike">Motorbike</label>
+                <input
+                  type="radio"
+                  name="mtrans-radio"
+                  id="mtrans-radio-Motorbike"
+                  value="Motorbike"
+              /></span>
+
+              <span>
+                <label for="mtrans-radio-Bike">Bike</label>
+                <input
+                  type="radio"
+                  name="mtrans-radio"
+                  id="mtrans-radio-Bike"
+                  value="Bike"
+              /></span>
+
+              <span>
+                <label for="mtrans-radio-publicTransport">Public Transportation</label>
+                <input
+                  type="radio"
+                  name="mtrans-radio"
+                  id="mtrans-radio-publicTransport"
+                  value="Public Transportation"
+              /></span>
+              <span>
+                <label for="mtrans-radio-Walking">Walking</label>
+                <input
+                  type="radio"
+                  name="mtrans-radio"
+                  id="mtrans-radio-Walking"
+                  value="Walking"
+              /></span>
+            </div>
+          </div>
+
+          <input type="submit" class="btn submit-btn col-span-23" value="Predict">
+        </form>
+      </div>
+    </main>
+  </body>
+</html>
