@@ -1,0 +1,109 @@
+@import url(https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@500;700&display=swap);
+
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+:root {
+    --border-ghost: 1px solid grey;
+    --border-radius: 10px;
+    --text: #222;
+    --background: #f6f9fc;
+    --primary: #408ccd;
+    --secondary: #8dbde6;
+    --accent: #55a0e0;
+}
+
+body {
+    font-family: 'Onest', 'Segoe UI' Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background: var(--background);
+    color: var(--text);
+    min-height: 100dvh;
+    display: flex;
+}
+
+
+a {
+    text-decoration: none;
+    color: #222;
+}
+
+p {
+    text-align: justify;
+    color: #444;
+}
+
+.jumbotron {
+    font-family: 'Onest';
+    width: 60vw;
+    margin: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: var(--border-ghost);
+    border-radius: var(--border-radius);
+    gap: 2rem;
+}
+
+.jumbo-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    border-bottom: 1px solid #222;
+    padding: 30px 0px;
+}
+
+.jumbotron h1 {
+    font-size: 3rem;
+    font-weight: bold;
+
+}
+
+
+.links {
+    padding: 10px;
+    background-color: rgb(179, 179, 179);
+    font-weight: bold;
+    border-radius: 5px;
+    color: whitesmoke;
+}
+
+.jumbo-content {
+    font-size: 1.3rem;
+    border-bottom: 1px solid #222;
+    padding-bottom: 30px;
+}
+
+.jumbo-footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.max-width-wrapper {
+    font-family: 'Onest';
+    width: 80vw;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    /* align-items: start; */
+}
+
+.form-item {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-item .form-item-label {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
