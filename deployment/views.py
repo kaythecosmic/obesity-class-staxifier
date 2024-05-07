@@ -4,14 +4,6 @@ import numpy as np
 import os
 from django.conf import settings
 
-modFile = open(os.path.join(settings.STATICFILES_DIRS[0], 'utils/staxifierV3.pkl'), 'rb')
-staxifier = pickle.load(modFile)
-modFile.close()
-
-scalerFile = open(os.path.join(settings.STATICFILES_DIRS[0], 'utils/xScaler.pkl'), 'rb')
-xScaler = pickle.load(scalerFile)
-scalerFile.close()
-
 
 # with open(os.path.join(settings.STATICFILES_DIRS[0], 'utils/staxifierV3.pkl'), 'rb') as modFile:
 #     staxifier = pickle.load(modFile)
@@ -29,6 +21,15 @@ def input(request):
 
 def predict(request):
     if request.method == "POST":
+
+        modFile = open(os.path.join(settings.STATICFILES_DIRS[0], 'utils/staxifierV3.pkl'), 'rb')
+        staxifier = pickle.load(modFile)
+        modFile.close()
+
+        scalerFile = open(os.path.join(settings.STATICFILES_DIRS[0], 'utils/xScaler.pkl'), 'rb')
+        xScaler = pickle.load(scalerFile)
+        scalerFile.close()
+
 
         # defining constats
         classes = {
