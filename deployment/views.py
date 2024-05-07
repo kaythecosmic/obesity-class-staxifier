@@ -4,11 +4,20 @@ import numpy as np
 import os
 from django.conf import settings
 
-with open(os.path.join(settings.STATICFILES_DIRS[0], 'utils/staxifierV3.pkl'), 'rb') as modFile:
-    staxifier = pickle.load(modFile)
+modFile = open(os.path.join(settings.STATICFILES_DIRS[0], 'utils/staxifierV3.pkl'), 'rb')
+staxifier = pickle.load(modFile)
+modFile.close()
 
-with open(os.path.join(settings.STATICFILES_DIRS[0], 'utils/xScaler.pkl'), 'rb') as scalerFile:
-    xScaler = pickle.load(scalerFile)
+scalerFile = open(os.path.join(settings.STATICFILES_DIRS[0], 'utils/xScaler.pkl'), 'rb')
+xScaler = pickle.load(scalerFile)
+scalerFile.close()
+
+
+# with open(os.path.join(settings.STATICFILES_DIRS[0], 'utils/staxifierV3.pkl'), 'rb') as modFile:
+#     staxifier = pickle.load(modFile)
+
+# with open(os.path.join(settings.STATICFILES_DIRS[0], 'utils/xScaler.pkl'), 'rb') as scalerFile:
+#     xScaler = pickle.load(scalerFile)
 
 
 # Create your views here.
