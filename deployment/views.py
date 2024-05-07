@@ -1,6 +1,14 @@
 from django.shortcuts import render
 import pickle
 import numpy as np
+import os
+from django.conf import settings
+
+with open(os.path.join(settings.STATICFILES_DIRS[0], 'utils/staxifierV3.pkl'), 'rb') as modFile:
+    staxifier = pickle.load(modFile)
+
+with open(os.path.join(settings.STATICFILES_DIRS[0], 'utils/xScaler.pkl'), 'rb') as scalerFile:
+    xScaler = pickle.load(scalerFile)
 
 
 # Create your views here.
@@ -12,12 +20,6 @@ def input(request):
 
 def predict(request):
     if request.method == "POST":
-
-        with open('D:/College Stuff/Semester 6/Homework/Data Mining & Analysis/mlproject/models/new/staxifierV3.pkl', 'rb') as modFile:
-            staxifier = pickle.load(modFile)
-
-        with open('D:/College Stuff/Semester 6/Homework/Data Mining & Analysis/mlproject/notebooks/xscaler.pkl', 'rb') as scalerFile:
-            xScaler = pickle.load(scalerFile)
 
         # defining constats
         classes = {
@@ -67,7 +69,6 @@ def predict(request):
         'description': 'You are considered to be severely overweight, which significantly increases your risk of developing serious health conditions such as heart disease, stroke, and type 2 diabetes. It is essential to prioritize your health and take proactive steps to manage your weight. Start by making small, sustainable changes to your diet and lifestyle, such as reducing portion sizes, increasing physical activity, and seeking support from healthcare professionals or support groups.'
     }
 }
-
 
         binaryYesNo = {
             'yes':1,
@@ -147,6 +148,7 @@ def predict(request):
 
         inputFeatures = np.array(inputFeatures)
         inputFeatures = xScaler.transform(inputFeatures.reshape(1, -1))
+        print(type(inputFeatures))
         print(type(inputFeatures))
         print(inputFeatures)
 
