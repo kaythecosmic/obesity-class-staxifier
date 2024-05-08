@@ -31,7 +31,7 @@ def load_staxifier():
             staxifier = None
 
 
-load_staxifier()
+# load_staxifier()
 
 def home(request):
     return render(request, "index.html")
