@@ -6,7 +6,6 @@ apt install -y python${PYTHON_VERSION} python${PYTHON_VERSION}-dev python${PYTHO
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 python${PYTHON_VERSION} get-pip.py
 echo "finished getting pip"
-python --version
 python${PYTHON_VERSION} -m pip install -r requirements.txt
 echo "finished installing dependencies..."
 python${PYTHON_VERSION} manage.py collectstatic

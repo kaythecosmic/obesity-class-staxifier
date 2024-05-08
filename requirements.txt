@@ -1,3 +1,4 @@
 Django==5.0.4
 numpy==1.26.4
 scikit-learn==1.4.0
+sqlite-devel
