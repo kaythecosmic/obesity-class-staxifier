@@ -13,8 +13,8 @@ from joblib import dump, load
 #     xScaler = pickle.load(scalerFile)
 
 
-staxifier = None
-xScaler = None
+# staxifier = None
+# xScaler = None
 
 # def load_staxifier():
 #     global staxifier
@@ -63,10 +63,13 @@ def predict(request):
         # xScaler = pickle.load(scalerFile)
         # scalerFile.close()
 
-        staxifier = load(os.path.join(settings.STATICFILES_DIRS[0], 'utils/staxifierV4.joblib'))
+        # staxifier = load(os.path.join(settings.STATICFILES_DIRS[0], 'utils/staxifierV4.joblib'))
+        # # xScaler = load(os.path.join(settings.STATICFILES_DIRS[0], 'utils/xscaler.joblib'))
         # xScaler = load(os.path.join(settings.STATICFILES_DIRS[0], 'utils/xscaler.joblib'))
-        xScaler = load(os.path.join(settings.STATICFILES_DIRS[0], 'utils/xscaler.joblib'))
         
+
+        staxifier = ""
+        xScaler = ""
         classes = {
             0: 'Insufficient Weight',
             1: 'Normal Weight',
