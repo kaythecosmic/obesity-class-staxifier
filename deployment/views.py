@@ -4,7 +4,7 @@ import numpy as np
 import os
 from django.conf import settings
 
-
+# redeploy
 # with open(os.path.join(settings.STATICFILES_DIRS[0], 'utils/staxifierV3.pkl'), 'rb') as modFile:
 #     staxifier = pickle.load(modFile)
 
