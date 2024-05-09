@@ -3,6 +3,7 @@ import pickle
 import numpy as np
 import os
 from django.conf import settings
+from joblib import dump, load
 
 # redeploy
 # with open(os.path.join(settings.STATICFILES_DIRS[0], 'utils/staxifierV3.pkl'), 'rb') as modFile:
@@ -15,23 +16,35 @@ from django.conf import settings
 staxifier = None
 xScaler = None
 
-def load_staxifier():
-    global staxifier
-    global xScaler
-    if staxifier is None:
-        try:
-            with open(os.path.join(settings.STATICFILES_DIRS[0], 'utils/staxifierV3.pkl'), 'rb') as modFile:
-                staxifier = pickle.load(modFile)
+# def load_staxifier():
+#     global staxifier
+#     global xScaler
+#     if staxifier is None:
+#         try:
+#             with open(os.path.join(settings.STATICFILES_DIRS[0], 'utils/staxifierV3.pkl'), 'rb') as modFile:
+#                 staxifier = pickle.load(modFile)
 
-            with open(os.path.join(settings.STATICFILES_DIRS[0], 'utils/xScaler.pkl'), 'rb') as scalerFile:
-                xScaler = pickle.load(scalerFile)
-        except FileNotFoundError:
-            staxifier = None
-        except Exception as e:
-            staxifier = None
+#             with open(os.path.join(settings.STATICFILES_DIRS[0], 'utils/xScaler.pkl'), 'rb') as scalerFile:
+#                 xScaler = pickle.load(scalerFile)
+#         except FileNotFoundError:
+#             staxifier = None
+#         except Exception as e:
+#             staxifier = None
 
+# def load_staxifier():
+#     global staxifier
+#     global xScaler
+#     if staxifier is None:
+#         try:
+#             staxifier = load(os.path.join(settings.STATICFILES_DIRS[0], 'utils/staxifierV3.pkl'))
 
-load_staxifier()
+#             with open(os.path.join(settings.STATICFILES_DIRS[0], 'utils/xscaler.pkl'), 'rb') as scalerFile:
+#                 xScaler = pickle.load(scalerFile)
+#                 print("i ran")
+#         except FileNotFoundError:
+#             staxifier = None
+#         except Exception as e:
+#             staxifier = None
 
 def home(request):
     return render(request, "index.html")
@@ -50,6 +63,10 @@ def predict(request):
         # xScaler = pickle.load(scalerFile)
         # scalerFile.close()
 
+        staxifier = load(os.path.join(settings.STATICFILES_DIRS[0], 'utils/staxifierV4.joblib'))
+        # xScaler = load(os.path.join(settings.STATICFILES_DIRS[0], 'utils/xscaler.joblib'))
+        xScaler = load(os.path.join(settings.STATICFILES_DIRS[0], 'utils/xscaler.joblib'))
+        
         classes = {
             0: 'Insufficient Weight',
             1: 'Normal Weight',
