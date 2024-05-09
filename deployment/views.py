@@ -42,7 +42,7 @@ def input(request):
 def predict(request):
     if request.method == "POST":
 
-        modFile = open(os.path.join(settings.STATICFILES_DIRS[0], 'utils/staxifierV3.pkl'), 'rb')
+        modFile = open(os.path.join(settings.STATICFILES_DIRS[0], 'utils/staxifierV4.pkl'), 'rb')
         staxifier = pickle.load(modFile)
         modFile.close()
 
