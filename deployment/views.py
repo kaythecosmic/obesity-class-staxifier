@@ -12,26 +12,26 @@ from django.conf import settings
 #     xScaler = pickle.load(scalerFile)
 
 
-# staxifier = None
-# xScaler = None
+staxifier = None
+xScaler = None
 
-# def load_staxifier():
-#     global staxifier
-#     global xScaler
-#     if staxifier is None:
-#         try:
-#             with open(os.path.join(settings.STATICFILES_DIRS[0], 'utils/staxifierV3.pkl'), 'rb') as modFile:
-#                 staxifier = pickle.load(modFile)
+def load_staxifier():
+    global staxifier
+    global xScaler
+    if staxifier is None:
+        try:
+            with open(os.path.join(settings.STATICFILES_DIRS[0], 'utils/staxifierV3.pkl'), 'rb') as modFile:
+                staxifier = pickle.load(modFile)
 
-#             with open(os.path.join(settings.STATICFILES_DIRS[0], 'utils/xScaler.pkl'), 'rb') as scalerFile:
-#                 xScaler = pickle.load(scalerFile)
-#         except FileNotFoundError:
-#             staxifier = None
-#         except Exception as e:
-#             staxifier = None
+            with open(os.path.join(settings.STATICFILES_DIRS[0], 'utils/xScaler.pkl'), 'rb') as scalerFile:
+                xScaler = pickle.load(scalerFile)
+        except FileNotFoundError:
+            staxifier = None
+        except Exception as e:
+            staxifier = None
 
 
-# load_staxifier()
+load_staxifier()
 
 def home(request):
     return render(request, "index.html")
@@ -42,13 +42,13 @@ def input(request):
 def predict(request):
     if request.method == "POST":
 
-        modFile = open(os.path.join(settings.STATICFILES_DIRS[0], 'utils/staxifierV4.pkl'), 'rb')
-        staxifier = pickle.load(modFile)
-        modFile.close()
+        # modFile = open(os.path.join(settings.STATICFILES_DIRS[0], 'utils/staxifierV4.pkl'), 'rb')
+        # staxifier = pickle.load(modFile)
+        # modFile.close()
 
-        scalerFile = open(os.path.join(settings.STATICFILES_DIRS[0], 'utils/xScaler.pkl'), 'rb')
-        xScaler = pickle.load(scalerFile)
-        scalerFile.close()
+        # scalerFile = open(os.path.join(settings.STATICFILES_DIRS[0], 'utils/xScaler.pkl'), 'rb')
+        # xScaler = pickle.load(scalerFile)
+        # scalerFile.close()
 
         classes = {
             0: 'Insufficient Weight',
