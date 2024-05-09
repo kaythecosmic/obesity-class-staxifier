@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Obesity Staxifier - Predict</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <main class="max-width-wrapper result-page">
+      <div class="result-page-banner">
+        <div class="page-header">
+          <h1>{{prediction.class_name}}</h1>
+        </div>
+
+        <div class="diagnosis">
+          <p>
+            You are classified as having <span>{{prediction.class_name}}</span>
+          </p>
+          <p>{{prediction.description}}</p>
+        </div>
+        <span>
+          <a href="/input" class="btn">TEST AGAIN</a>
+          <a href="/" class="btn">HOME</a>
+        </span>
+      </div>
+    </main>
+  </body>
+</html>

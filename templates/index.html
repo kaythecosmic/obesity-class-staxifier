@@ -1,0 +1,71 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Obesity Staxifier - Home</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <main class="jumbotron">
+      <div class="jumbo-header">
+        <div class="info">
+          <h3>DMA Lab Project - Obesity Staxifier</h3>
+          <h1>Obesity Level Prediction System</h1>
+        </div>
+
+        <a
+          class="btn"
+          href="https://github.com/kaythecosmic/obesity-class-staxifier.git"
+          target="_blank"
+        >
+          Source Code
+        </a>
+      </div>
+
+      <div class="jumbo-content">
+        <p>
+          Obesity is a growing concern driven by sedentary lifestyles and poor
+          dietary habits. Technology-based solutions like personalized fitness
+          apps and smart kitchen technologies are emerging to address this
+          issue. The lack of nutritional awareness and easy access to unhealthy
+          food options further perpetuate this cycle. As a result, obesity rates
+          continue to rise, accompanied by a surge in related health issues like
+          diabetes and cardiovascular diseases. Addressing this multifaceted
+          problem requires comprehensive strategies that promote regular
+          physical activity, encourage healthier eating choices, and improve
+          nutritional education. By addressing these root causes, we can
+          effectively combat obesity and its associated health risks.
+        </p>
+
+        <p>
+          I developed an obesity level prediction system using a stacking
+          approach with multiple classifiers. The aim is to use the ensemble
+          learning method by combining diverse base classifiers into a
+          meta-classifier capable of accurately predicting obesity levels across
+          seven distinct categories. The model used,
+          <a
+            href="https://docs.google.com/document/d/1KWIPf9oD5eDRTC14WCIXGT3_49HRqe-yHMgxjJJSClA/edit?usp=sharing"
+            target="_blank"
+          >
+            Staxifier </a
+          >was able to achieve and accuracy score of <b>0.9905</b> with a high
+          precision and recall score of <b>0.991</b> and
+          <b>0.9901</b> respectively
+        </p>
+        <span>
+          <a href="/input" class="btn">Get a Prediction!</a>
+        </span>
+      </div>
+
+      <div class="jumbo-footer">
+        <small>Submitted By</small>
+        <strong>Kanishk Nagpal</strong>
+        <small>CO21328 - CSE, 6<sup>th</sup> Semester </small>
+      </div>
+    </main>
+  </body>
+</html>
